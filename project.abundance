@@ -4,6 +4,16 @@
   "y": 0,
   "uniqueID": "id-121",
   "name": "extrudeFaceDirected",
+  "ioValues": [
+    {
+      "name": "face",
+      "ioValue": "__GEOMETRY_INPUT__"
+    },
+    {
+      "name": "extrusionVec",
+      "ioValue": 10
+    }
+  ],
   "topLevel": true,
   "allAtoms": [
     {
@@ -17,9 +27,61 @@
           "ioValue": "__GEOMETRY_INPUT__"
         }
       ]
+    },
+    {
+      "atomType": "Code",
+      "x": 0.45166015625,
+      "y": 0.4833333333333333,
+      "uniqueID": "id-126",
+      "ioValues": [
+        {
+          "name": "faces",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "direction",
+          "ioValue": 10
+        }
+      ],
+      "interpreterVersion": 1,
+      "code": "function run(faces: Assembly, direction: number[]) {\n  return faces.onLeafs((leaf) => {\n    leaf.geometry = replicad.basicFaceExtrusion(leaf.geometry, new replicad.Vector(direction))\n    return leaf;\n  })\n}",
+      "compiledCode": "\"use strict\";\nfunction run(faces, direction) {\n    return faces.onLeafs((leaf) => {\n        leaf.geometry = replicad.basicFaceExtrusion(leaf.geometry, new replicad.Vector(direction));\n        return leaf;\n    });\n}\n"
+    },
+    {
+      "atomType": "Input",
+      "x": 0.025384615384615384,
+      "y": 0.2604166666666667,
+      "uniqueID": "id-138",
+      "name": "face",
+      "type": "geometry"
+    },
+    {
+      "atomType": "Input",
+      "x": 0.025384615384615384,
+      "y": 0.4125,
+      "uniqueID": "id-141",
+      "name": "extrusionVec",
+      "type": "point3d",
+      "pointValue": null
     }
   ],
-  "allConnectors": [],
+  "allConnectors": [
+    {
+      "ap2Name": "number or geometry",
+      "ap1ID": "id-126",
+      "ap2ID": "id-122"
+    },
+    {
+      "ap2Name": "faces",
+      "ap1ID": "id-138",
+      "ap2ID": "id-126"
+    },
+    {
+      "ap2Name": "direction",
+      "ap1ID": "id-141",
+      "ap2ID": "id-126"
+    }
+  ],
   "unitsKey": "Unitless",
   "fileTypeVersion": 1,
   "filetypeVersion": 1
