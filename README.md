@@ -4,6 +4,12 @@
 
 ![](/project.svg)
 
+## Inputs
+
+- **face** (geometry)
+- **extrusionVec** (point3d)
+
+
 
 
  
